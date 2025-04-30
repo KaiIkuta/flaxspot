@@ -1,4 +1,4 @@
 # flaxspot
 
 
-Deciphering Stellar Surface with Autoencoder
+Deciphering Stellar Surface with unsupervised machine learning. 
