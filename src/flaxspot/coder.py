@@ -186,7 +186,9 @@ def plot_latent_traversal(model, params, base_latent, target_dim, seq_len, trave
     traversal_z[:, target_dim] = z_values
     
     jax_z = jnp.array(traversal_z)
-    (pred_mu, _), _ = jax.jit(lambda z: model.apply({'params': params}, z, deterministic=True, method=model.decode))(jax_z)
+    
+    pred_mu, _ = jax.jit(lambda z: model.apply({'params': params}, z, deterministic=True, method=model.decode))(jax_z)
+    
     reconstructed_flux = np.array(pred_mu).squeeze(-1)
 
     fig, axes = plt.subplots(num_steps, 1, figsize=(10, 1.2 * num_steps), sharex=True, sharey=True)
