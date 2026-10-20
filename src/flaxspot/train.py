@@ -31,7 +31,6 @@ def sota_loss_fn(params, model, inputs, padding_mask, rng, beta=1.0, free_bits=0
 
 
 class FlaxSpotManager:
-    """モデルの初期化、学習、推論（エンコード・デコード）を一括管理するラッパークラス"""
 
     def __init__(
         self,
@@ -59,7 +58,6 @@ class FlaxSpotManager:
             num_layers=num_layers,
         )
 
-        # パラメータ初期化
         dummy_flux = jnp.ones((1, seq_len, 1), dtype=jnp.float32)
         dummy_mask = jnp.ones((1, seq_len), dtype=jnp.float32)
         self.rng, init_rng = jax.random.split(self.rng)
@@ -75,7 +73,6 @@ class FlaxSpotManager:
             apply_fn=self.model.apply, params=init_params, tx=tx
         )
 
-        # JITコンパイル関数の準備
         self._train_step = jax.jit(self._make_train_step())
         self._encode_step = jax.jit(
             lambda params, x, mask: self.model.apply(
@@ -106,7 +103,6 @@ class FlaxSpotManager:
         return train_step
 
     def fit(self, data_generator_fn, num_epochs=10, annealing_epochs=5.0, log_interval=50):
-        """データジェネレータ関数を受け取って学習を実行する"""
         history = {"loss": [], "recon": [], "kl": []}
 
         for epoch in range(1, num_epochs + 1):
@@ -145,7 +141,6 @@ class FlaxSpotManager:
         return history
 
     def predict_segments(self, flux_segments, mask_segments=None, batch_size=8):
-        """分割された光度曲線チャンク群に対して、潜在変数(mu)の抽出と再構築をバッチ処理で行う"""
         num_segments = len(flux_segments)
         if mask_segments is None:
             mask_segments = np.ones((num_segments, self.seq_len), dtype=np.float32)
