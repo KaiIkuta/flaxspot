@@ -1,5 +1,4 @@
-# flaxspot: Deciphering Stellar Surface with Transformer-based Variational Autoencoder
+# flaxspot: Deciphering Stellar Surface with Transformer
 
 
-
-Application to Kepler data of solar-type stars (Ikuta & Tokuno, in preparation)
+Application to photometric data of solar-type stars
