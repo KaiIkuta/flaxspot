@@ -94,7 +94,7 @@ class AstroconformerVAE(nn.Module):
     patch_size: int = 16
     d_model: int = 128
     latent_dim: int = 64
-    memory_num_tokens: int = 128  # 階段状の再構築を防ぐためデフォルトを128に設定
+    memory_num_tokens: int = 128
     num_layers: int = 3
     num_heads: int = 4
     dropout_rate: float = 0.1
