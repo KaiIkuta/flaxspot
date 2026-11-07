@@ -1,1 +1,1 @@
-# flaxspot: Deciphering stellar surface with Transformer
+# flaxspot: Decoding stellar surface with Transformer
