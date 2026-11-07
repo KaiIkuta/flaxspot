@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "flaxspot"
 version = "0.1.0"
-description = "flaxspot: Deciphering Stellar Surface with Transformer"
+description = "flaxspot: Decoding stellar surface with Transformer"
 readme = "README.md"
 authors = [
     { name = "Kai Ikuta" }
@@ -17,7 +17,6 @@ dependencies = [
     "optax>=0.1.7",
     "numpy>=1.24.0",
     "matplotlib>=3.7.0",
-    "scikit-learn>=1.2.0",
 ]
 
 [tool.setuptools.packages.find]
